@@ -7,7 +7,7 @@ export default function Postlist() {
 
     const [posts,setPosts] = useState([])
     const fetchPost = async ()=>{
-    const res = await axios.get('http://localhost:4000/posts');
+    const res = await axios.get('http://localhost:4002/posts');
     setPosts(res.data);
     };
     useEffect(() => {
@@ -20,7 +20,7 @@ export default function Postlist() {
         
         <div className="card-body">
             <h3>{post.title}</h3>
-            <Commentlist postId={post.id}/>
+            <Commentlist comment ={post.comment}/>
             <CommentCreate postId={post.id} />
         </div>
         </div>
@@ -29,7 +29,7 @@ export default function Postlist() {
     })
     return(
         <div className="d-flex flex-row flex-wrap justify-content-between">
-{           renderedPost}
+            {renderedPost}
         </div>
     )
         
