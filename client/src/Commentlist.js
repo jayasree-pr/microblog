@@ -5,9 +5,21 @@ import CommentCreate from './CommentCreate';
 export default function Commentlist({comment}) {
 
     const renderedComment = Object.values(comment).map(comment=>{
+
+        let content;
+
+        if(comment.status === 'approved'){
+            content=comment.content;
+        }
+        if(comment.status === 'rejected'){
+            content="comment Rejected";
+        }
+        if(comment.status === 'pending'){
+            content="Waiting for moderation";
+        }
         
         return (
-        <li key={comment.id}>{comment.content}</li>
+        <li key={comment.id}>{content}</li>
         )
         })
 
